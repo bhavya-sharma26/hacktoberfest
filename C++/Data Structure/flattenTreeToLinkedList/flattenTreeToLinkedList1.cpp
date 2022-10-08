@@ -1,4 +1,12 @@
 //Using First Approach
+
+// I WOULD PREFER YOU TO SEE THE APPROACH BY DIRECTLY SCROLLING DOWN TO THE "SOLUTION" CLASS.
+// It is a simple recursive approach
+
+//Time Complexity: O(n)
+//Space Complexity: O(1)
+
+
 #include<bits/stdc++.h>
 using namespace std;
 struct Node{
@@ -42,15 +50,20 @@ void inorder(Node* root){
 }
 class Solution{
     public :
+    // "prev" pointer is to store the right pointer of the current node in the recursive call 
     Node* prev=NULL;
     void flatten(Node* root){
         if(root==NULL){
             return;
         }
+        //move to the rightmost part till null node reaches
         flatten(root->right);
+        //after the above step move the leftmost part 
         flatten(root->left);
+        //make changes to the left and right pointer of the current node
         root->right=prev;
         root->left=NULL;
+        //move to the node of the upper recursive call
         prev=root;
     }
 };

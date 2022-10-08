@@ -1,4 +1,12 @@
-//Using First Approach
+//Using Second Approach
+
+// I WOULD PREFER YOU TO SEE THE APPROACH BY DIRECTLY SCROLLING DOWN TO THE "SOLUTION" CLASS.
+// It is a approach that is using stack for implementing or flattening a Binary Tree
+
+//Time Complexity: O(n)
+//Space Complexity: O(n)
+
+
 #include<bits/stdc++.h>
 using namespace std;
 struct Node{
@@ -49,8 +57,13 @@ class Solution{
     while(!s.empty()){
         Node* curr=s.top();
         s.pop();
+
+        //push right pointer first into the stack as the current node will point to the topmost 
+        //stack element that will be(after poppinf out the current node) the left pointer of the current node
         if(curr->right)s.push(curr->right);
         if(curr->left)s.push(curr->left);
+
+        //make changes to the left and right pointer of the current node
         if(!s.empty()){
         curr->right=s.top();
         curr->left=NULL;}

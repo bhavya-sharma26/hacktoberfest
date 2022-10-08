@@ -1,4 +1,12 @@
-//Using First Approach
+//Using Third Approach
+
+// I WOULD PREFER YOU TO SEE THE APPROACH BY DIRECTLY SCROLLING DOWN TO THE "SOLUTION" CLASS.
+// It is a simple approach including concept of Morris Traversal
+
+//Time Complexity: O(n)
+//Space Complexity: O(1)
+
+
 #include<bits/stdc++.h>
 using namespace std;
 struct Node{
@@ -46,17 +54,20 @@ class Solution{
     void flatten(Node* root){
          Node* curr=root;
     while(curr!=NULL) 
-   {
+   {   
+        //find inorder predecessor
+       //it is basically left rightmost node in the left subtree of the root node
        if(curr->left){
     Node* next=curr->left;
     while(next->right){
         next=next->right;
     }
-    
+        
         next->right=curr->right;
         curr->right=curr->left;
         curr->left=NULL;
     } 
+    //move to the next node
     curr=curr->right;
    }
     }
